@@ -1,0 +1,8 @@
+[
+  {
+    "rollNo": 0,
+    "name": "Vardhan",
+    "extraSubject": "Python",
+    "subjects": ["maths", "physics", "chemistry"]
+  }
+]
