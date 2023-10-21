@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 4000;
-
+var cors = require("cors");
+app.use(cors());
 app.use(bodyParser.json());
+
 app.use(express.urlencoded({ extended: false }));
 
 const subjectsList = require("./endPoints.json");
