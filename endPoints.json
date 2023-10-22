@@ -1,8 +1,8 @@
 [
   {
     "rollNo": 0,
-    "name": "manas",
-    "extraSubject": "Python",
-    "subjects": ["maths", "physics", "chemistry"]
+    "name": "dummy data ",
+    "extraSubject": "you can edit name and rollNo by selecting text (data updation and rendering may take time due to less computation power on backend)",
+    "subjects": ["dalete this card"]
   }
 ]

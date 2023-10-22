@@ -68,6 +68,31 @@ app.delete("/subjects/:id", (req, res) => {
   }
 });
 
+app.put("/subjects", (req, res) => {
+  try {
+    const rollNo = req.body.rollNo;
+
+    // Find the index of the item in the subjectsList
+    const findIndexInList = subjectsList.findIndex(
+      (item) => item.rollNo === +rollNo
+    );
+
+    if (findIndexInList === -1) {
+      res.status(404).send({ msg: "Item not found" });
+      return;
+    }
+
+    // Replace the item at the found index with the updated data
+    subjectsList[findIndexInList] = req.body;
+
+    res.send({ updated: "successfully updated" });
+  } catch (error) {
+    res
+      .status(500)
+      .send({ msg: "We are facing an issue, please try again later" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`localhost:${port} todo api`);
 });
