@@ -34,7 +34,7 @@ app.get("/subjects/:rollNo", (req, res) => {
 app.post("/subjects", (req, res) => {
   try {
     const newSubjectsList = {
-      rollNo: req.body.rollNo,
+      rollNo: +req.body.rollNo,
       name: req.body.name,
       extraSubject: req.body.extraSubject,
       subjects: req.body.subjects,
@@ -51,10 +51,13 @@ app.post("/subjects", (req, res) => {
   }
 });
 
-app.delete("/subjects/:id", (req, res) => {
+app.delete("/subjects/:rollNo", (req, res) => {
   try {
     const { rollNo } = req.params;
-    const findIdInList = subjectsList.find((items) => items.rollNo === +rollNo);
+    console.log(req.params);
+    const findIdInList = subjectsList.findIndex(
+      (item) => item.rollNo == rollNo
+    );
     if (findIdInList === -1) {
       res.send({ msg: "failed to delete the list" });
       return;
@@ -64,7 +67,7 @@ app.delete("/subjects/:id", (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .send({ msg: "we are facing an issue please try again later" });
+      .send({ msg: "we are facing an issue, please try again later" });
   }
 });
 
@@ -74,7 +77,7 @@ app.put("/subjects", (req, res) => {
 
     // Find the index of the item in the subjectsList
     const findIndexInList = subjectsList.findIndex(
-      (item) => item.rollNo === +rollNo
+      (item) => item.rollNo == rollNo
     );
 
     if (findIndexInList === -1) {
